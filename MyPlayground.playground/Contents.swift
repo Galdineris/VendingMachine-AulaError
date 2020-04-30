@@ -141,3 +141,19 @@ class VendingMachine {
     }
 }
 
+let vendingMachine = VendingMachine(products: [
+    VendingMachineProduct(name: "Carregador de iPhone", amount: 5, price: 150.00),
+    VendingMachineProduct(name: "Funnions", amount: 2, price: 7.00),
+    VendingMachineProduct(name: "Xiaomi Umbrella", amount: 5, price: 125.00),
+    VendingMachineProduct(name: "Trator", amount: 1, price: 75000.00)
+])
+
+do {
+    try vendingMachine.getProduct(named: "Funnions", with: 0.0)
+    try vendingMachine.getProduct(named: "Umbrella", with: 140.0)
+    print("deu bom")
+} catch VendingMachineError.produtcStuck {
+    print("Pedimos desculpas, mas houve um problema, o seu produto ficou preso.")
+} catch {
+    print(error.localizedDescription)
+}
